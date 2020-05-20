@@ -5,9 +5,14 @@ const app = express();
 const mongoose = require("mongoose");
 const port = process.env.PORT;
 const uri = process.env.ATLAS_URI;
+// Rutas
+const users = require("./routes/users");
+const exercises = require("./routes/exercises");
 
 app.use(cors());
 app.use(express.json());
+app.use("/exercises", exercises);
+app.use("/users", users);
 
 // Connect to MongoDB Atlas
 mongoose
